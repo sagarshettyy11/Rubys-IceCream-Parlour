@@ -1,111 +1,306 @@
+/* Custom Design System - Ruby's Ice Cream Parlour */
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* Warm Dessert Palette */
+  --bg-primary: #FAF6F0;       /* Soft Cream base */
+  --bg-secondary: #FFFDFB;     /* Warm White for paper-like sheets */
+  --bg-tertiary: #F3ECE2;      /* Elegant Beige for contrast bands */
+  --color-chocolate: #3E2723;  /* Deep rich chocolate brown for text/headings */
+  --color-caramel: #5D4037;    /* Lighter caramel-brown for captions */
+  --color-accent: #E5A93B;     /* Golden Honey accent for actions */
+  --color-accent-hover: #C68B25;
+  --color-accent-pastel: #FAEDCD; /* Creamy yellow for tags */
+  --color-pink-pastel: #FCEADE;   /* Soft pink/rose for sub-badges */
+  --color-whatsapp: #25D366;   /* WhatsApp official green */
+  --color-whatsapp-dark: #128C7E;
+  --color-glass: rgba(255, 253, 251, 0.7);
+  
+  /* Borders and Shadows */
+  --border-color: rgba(62, 39, 35, 0.08);
+  --border-light: rgba(255, 255, 255, 0.4);
+  --shadow-sm: 0 4px 12px rgba(62, 39, 35, 0.04);
+  --shadow-md: 0 12px 24px rgba(62, 39, 35, 0.06);
+  --shadow-lg: 0 20px 40px rgba(62, 39, 35, 0.08);
+  --shadow-glass: 0 8px 32px 0 rgba(62, 39, 35, 0.05);
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* Fonts */
+  --font-headings: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Outfit', system-ui, -apple-system, sans-serif;
+  
+  /* Layout */
+  --container-max: 1280px;
+}
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
+/* Hide Default Cursor on Desktop for custom follower */
+@media (min-width: 1025px) {
+  body, a, button, select, input, textarea, [role="button"], .cart-trigger, .add-to-cart-btn {
+    cursor: none !important;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+/* Base Reset & Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+html {
+  scroll-behavior: initial; /* Handled by Lenis smooth scroll */
 }
 
 body {
-  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--color-chocolate);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 5px;
+  border: 2px solid var(--bg-primary);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-caramel);
+}
+
+/* Selection colors */
+::selection {
+  background-color: var(--color-accent-pastel);
+  color: var(--color-chocolate);
+}
+
+/* Main Layout Wrapper */
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+/* Typography & Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headings);
+  font-weight: 700;
+  color: var(--color-chocolate);
+  line-height: 1.25;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
 p {
-  margin: 0;
+  color: var(--color-caramel);
+  font-size: 1rem;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
+/* Custom Utility Classes */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.text-center { text-align: center; }
+
+.section-padding {
+  padding: 120px 0;
+}
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 80px 0;
+  }
+}
+
+/* Badges & Tags */
+.badge {
   display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.badge-gold {
+  background-color: var(--color-accent-pastel);
+  color: var(--color-chocolate);
+  border: 1px solid rgba(229, 169, 59, 0.2);
+}
+.badge-pink {
+  background-color: var(--color-pink-pastel);
+  color: var(--color-chocolate);
+  border: 1px solid rgba(62, 39, 35, 0.05);
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+/* Interactive Elements (Glassmorphism & Shadows) */
+.glass-panel {
+  background: var(--color-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-glass);
+}
+
+/* Buttons & Liquid Morphing */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border: none;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background-color: var(--color-chocolate);
+  color: var(--bg-primary);
+  box-shadow: 0 4px 12px rgba(62, 39, 35, 0.15);
+}
+.btn-primary:hover {
+  background-color: #5D4037;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(62, 39, 35, 0.25);
+  animation: liquid-morph 0.8s ease-in-out infinite alternate;
+}
+
+.btn-accent {
+  background-color: var(--color-accent);
+  color: var(--color-chocolate);
+  box-shadow: 0 4px 12px rgba(229, 169, 59, 0.15);
+}
+.btn-accent:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(229, 169, 59, 0.25);
+  animation: liquid-morph 0.8s ease-in-out infinite alternate;
+}
+
+.btn-whatsapp {
+  background-color: var(--color-whatsapp);
+  color: white;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.15);
+}
+.btn-whatsapp:hover {
+  background-color: var(--color-whatsapp-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
+  animation: liquid-morph 0.8s ease-in-out infinite alternate;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-chocolate);
+  border: 2px solid var(--color-chocolate);
+}
+.btn-outline:hover {
+  background-color: var(--color-chocolate);
+  color: var(--bg-primary);
+  transform: translateY(-2px);
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+}
+
+/* Liquid Morphing Animation keyframes */
+@keyframes liquid-morph {
+  0% {
+    border-radius: 50px 35px 50px 35px;
+  }
+  100% {
+    border-radius: 35px 50px 35px 50px;
+  }
+}
+
+/* Ambient Floating Glow highlights */
+.glow-highlight {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.15;
+  mix-blend-mode: multiply;
+  animation: glow-pulse 12s ease-in-out infinite alternate;
+}
+
+@keyframes glow-pulse {
+  0% {
+    transform: scale(1) translate(0px, 0px);
+  }
+  50% {
+    transform: scale(1.2) translate(50px, -30px);
+  }
+  100% {
+    transform: scale(0.9) translate(-20px, 40px);
+  }
+}
+
+/* 3D Perspective settings for Tilt cards */
+.perspective-container {
+  perspective: 1000px;
+}
+
+/* Carousel Testimonials */
+.carousel-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  width: 100%;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  padding: 0 12px;
+}
+
+/* Dark Mode Overrides (Subtle cozy cafe look at night) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #1F1511;       /* Espresso cup dark cream */
+    --bg-secondary: #2C1E18;     /* Dark hazelnut brown */
+    --bg-tertiary: #190F0C;      /* Deep dark roast brown */
+    --color-chocolate: #F5EFEB;  /* Soft cream color for typography */
+    --color-caramel: #D7CCC8;    /* Lighter cream grey */
+    --color-glass: rgba(44, 30, 24, 0.8);
+    --border-color: rgba(245, 239, 235, 0.1);
+    --border-light: rgba(255, 255, 255, 0.05);
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 12px 24px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.4);
+  }
+  
+  .glass-panel {
+    background: var(--color-glass);
+    border-color: var(--border-color);
+  }
 }
