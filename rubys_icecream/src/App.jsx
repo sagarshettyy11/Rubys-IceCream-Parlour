@@ -12,8 +12,7 @@ import Gallery from './components/Gallery';
 import Stats from './components/Stats';
 import Contact from './components/Contact';
 import CartDrawer from './components/CartDrawer';
-
-
+import Preloader from './components/Preloader';
 // Awwwards Premium Upgrade Components
 import CustomCursor from './components/CustomCursor';
 import AmbientSprinkles from './components/AmbientSprinkles';
@@ -25,6 +24,7 @@ import 'lenis/dist/lenis.css';
 export default function App() {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isPreloading, setIsPreloading] = useState(true);
 
   // Initialize Lenis Smooth Scroll
   useEffect(() => {
@@ -95,6 +95,11 @@ export default function App() {
 
   return (
     <>
+      {/* Immersive SVG Preloader */}
+      <AnimatePresence>
+        {isPreloading && <Preloader onComplete={() => setIsPreloading(false)} />}
+      </AnimatePresence>
+
       {/* Interactive custom cherry/scoop cursor */}
       <CustomCursor />
 
