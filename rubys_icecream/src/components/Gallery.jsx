@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Camera, X, ZoomIn } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const galleryImages = [
   {
@@ -55,6 +59,30 @@ const galleryImages = [
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const sectionRef = useRef(null);
+  const masonryRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.gallery-item',
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          stagger: 0.15,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: masonryRef.current,
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   // 3D Card Tilt Calculation
   const handleCardMouseMove = (e) => {
@@ -71,7 +99,7 @@ export default function Gallery() {
   };
 
   return (
-    <section id="gallery" className="section-padding" style={{ background: 'var(--bg-tertiary)', overflow: 'hidden', position: 'relative' }}>
+    <section ref={sectionRef} id="gallery" className="section-padding" style={{ background: 'var(--bg-tertiary)', overflow: 'hidden', position: 'relative' }}>
       
       {/* Background Glow */}
       <div 
@@ -102,7 +130,7 @@ export default function Gallery() {
         </div>
 
         {/* Masonry Layout */}
-        <div className="gallery-masonry">
+        <div ref={masonryRef} className="gallery-masonry">
           {galleryImages.map((image) => (
             <div 
               key={image.id} 

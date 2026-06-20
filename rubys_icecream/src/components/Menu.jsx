@@ -235,7 +235,7 @@ export default function Menu({ onAddToCart }) {
                 >
                   <div>
                     <h3 style={{ fontSize: '1.2rem', fontWeight: '700', marginBottom: '6px' }}>{item.name}</h3>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--color-caramel)', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis', height: '40px', lineHeight: '1.4' }}>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--color-caramel)', lineHeight: '1.4' }}>
                       {item.description || 'Delightful artisanal cold scoop made with rich fresh cream and natural flavor elements.'}
                     </p>
                   </div>
