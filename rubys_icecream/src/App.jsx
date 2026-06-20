@@ -12,7 +12,7 @@ import Gallery from './components/Gallery';
 import Stats from './components/Stats';
 import Contact from './components/Contact';
 import CartDrawer from './components/CartDrawer';
-import Footer from './components/Footer';
+
 
 // Awwwards Premium Upgrade Components
 import CustomCursor from './components/CustomCursor';
@@ -109,37 +109,34 @@ export default function App() {
         {/* Page Section stack with melting liquid dividers */}
         <main>
           <Hero />
-          
+
           {/* Smooth beige splash wave below Hero */}
           <DripDivider type="beige" />
-          
+
           <Specials onAddToCart={handleAddToCart} />
-          
+
           {/* Melting dark chocolate drip divider below Specials */}
           <DripDivider type="chocolate" />
-          
+
           <Menu onAddToCart={handleAddToCart} />
-          
+
           {/* Flipped beige splash wave below Menu */}
           <DripDivider type="beige" flip={true} />
-          
+
           <Gallery />
-          
+
           {/* Melting dark chocolate drip divider below Gallery */}
           <DripDivider type="chocolate" />
-          
+
           <Stats />
           <Contact />
         </main>
       </div>
 
-      {/* Footer copyright and links */}
-      <Footer />
-
       {/* Sliding WhatsApp Cart Panel */}
       <AnimatePresence>
         {isCartOpen && (
-          <CartDrawer 
+          <CartDrawer
             isOpen={isCartOpen}
             onClose={() => setIsCartOpen(false)}
             cartItems={cart}
@@ -174,7 +171,7 @@ export default function App() {
         {cartCount > 0 ? (
           <div style={{ position: 'relative' }}>
             <span style={{ fontSize: '1.25rem' }}>🛒</span>
-            <span 
+            <span
               style={{
                 position: 'absolute',
                 top: '-12px',

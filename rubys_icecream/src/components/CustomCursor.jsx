@@ -17,24 +17,23 @@ export default function CustomCursor() {
 
   useEffect(() => {
     // Check if device has touch capability (mobile/tablet)
-    const checkDevice = () => {
-      const isTouch = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
-      setIsMobile(isTouch);
-    };
+    const isTouch = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
+    setIsMobile(isTouch);
 
-    checkDevice();
-    window.addEventListener('resize', checkDevice);
+    if (isTouch) {
+      document.body.classList.remove('has-custom-cursor');
+      return;
+    }
 
-    if (isMobile) return;
+    // On desktop, add body class to hide the default cursor and set up mouse listeners
+    document.body.classList.add('has-custom-cursor');
 
-    // Track mouse coordinates
     const handleMouseMove = (e) => {
       // Offset by half of cursor default size (16px)
       cursorX.set(e.clientX - 16);
       cursorY.set(e.clientY - 16);
     };
 
-    // Track mouse hover states on interactive tags
     const handleMouseOver = (e) => {
       const target = e.target.closest('[data-cursor]');
       if (target) {
@@ -50,7 +49,7 @@ export default function CustomCursor() {
         }
       } else {
         // Check if hover is general link or button
-        const isInteractive = e.target.closest('a, button, input, select, textarea, [role="button"]');
+        const isInteractive = e.target.closest('a, button, input, select, textarea, [role="button"], .cart-trigger, .add-to-cart-btn');
         if (isInteractive) {
           setCursorType('hovered');
           setCursorText('');
@@ -65,11 +64,11 @@ export default function CustomCursor() {
     window.addEventListener('mouseover', handleMouseOver);
 
     return () => {
-      window.removeEventListener('resize', checkDevice);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseover', handleMouseOver);
+      document.body.classList.remove('has-custom-cursor');
     };
-  }, [isMobile]);
+  }, []);
 
   if (isMobile) return null;
 

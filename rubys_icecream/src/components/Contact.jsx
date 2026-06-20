@@ -239,6 +239,22 @@ export default function Contact() {
 
         </div>
 
+        {/* Simple integrated copyright footer */}
+        <div 
+          style={{ 
+            marginTop: '60px', 
+            borderTop: '1px solid var(--border-color)', 
+            paddingTop: '30px', 
+            textAlign: 'center', 
+            fontSize: '0.85rem',
+            color: 'var(--color-caramel)'
+          }}
+        >
+          <p style={{ color: 'var(--color-caramel)', margin: 0 }}>
+            &copy; {new Date().getFullYear()} Ruby's Ice Cream Parlour. All rights reserved. | Made with ❤ for Ice Cream Lovers.
+          </p>
+        </div>
+
       </div>
 
       <style>{`

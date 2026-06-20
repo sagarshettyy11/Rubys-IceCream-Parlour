@@ -126,16 +126,7 @@ export default function Menu({ onAddToCart }) {
           </div>
 
           {/* Category Filter Pills */}
-          <div 
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '12px',
-              justifyContent: 'center',
-              width: '100%'
-            }}
-            className="filter-pills"
-          >
+          <div className="filter-pills">
             {categories.map((category) => (
               <button
                 key={category.id}

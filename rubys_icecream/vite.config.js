@@ -8,4 +8,9 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
+  server: {
+    allowedHosts: [
+      'unissued-moneywise-stinging.ngrok-free.dev'
+    ]
+  }
 })

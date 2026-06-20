@@ -70,6 +70,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
 
       {/* Main Drawer Slide In panel */}
       <motion.div 
+        className="cart-drawer-panel"
         initial={{ x: '100%' }}
         animate={{ x: 0 }}
         exit={{ x: '100%' }}

@@ -108,6 +108,7 @@ export default function Stats() {
         
         {/* Credibility Stats counters */}
         <div 
+          className="stats-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
