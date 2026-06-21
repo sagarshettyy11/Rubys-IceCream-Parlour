@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Send, Star, Zap } from 'lucide-react';
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const handleMove = (e) => {
@@ -14,6 +24,10 @@ export default function Hero() {
     window.addEventListener('mousemove', handleMove);
     return () => window.removeEventListener('mousemove', handleMove);
   }, []);
+
+  const { scrollY } = useScroll();
+  const xRange = useTransform(scrollY, [0, 800], [isMobile ? -100 : -650, isMobile ? 100 : 450]);
+  const rotateRange = useTransform(scrollY, [0, 800], [-15, 25]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -81,7 +95,7 @@ export default function Hero() {
         alignItems: 'center',
         paddingTop: '100px',
         position: 'relative',
-        overflow: 'hidden',
+        overflow: 'visible',
         background: 'radial-gradient(circle at 80% 20%, #FAF0E4 0%, var(--bg-primary) 70%)'
       }}
     >
@@ -295,32 +309,43 @@ export default function Hero() {
               }}
             />
 
-            {/* Main floating image moving on mouse coordinates (Parallax) */}
-            <motion.div 
-              variants={floatVariants}
-              animate="animate"
+            {/* Main floating image moving on mouse coordinates & scroll-linked animation */}
+            <motion.div
               style={{
-                position: 'relative',
-                zIndex: 3,
+                x: xRange,
+                rotate: rotateRange,
                 width: '100%',
                 maxWidth: '420px',
-                height: 'auto',
                 display: 'flex',
                 justifyContent: 'center',
-                transform: `translate3d(${mousePosition.x * 20}px, ${mousePosition.y * 20}px, 0)`,
-                transition: 'transform 0.3s ease-out'
+                zIndex: 3
               }}
             >
-              <img 
-                src="/images/hero_ice_cream.png" 
-                alt="Gourmet Chocolate Ice Cream Cone"
+              <motion.div 
+                variants={floatVariants}
+                animate="animate"
                 style={{
+                  position: 'relative',
                   width: '100%',
                   height: 'auto',
-                  objectFit: 'contain',
-                  filter: 'drop-shadow(0 30px 45px rgba(62, 39, 35, 0.22))'
+                  display: 'flex',
+                  justifyContent: 'center',
+                  x: mousePosition.x * 20,
+                  y: mousePosition.y * 20,
+                  transition: 'transform 0.3s ease-out'
                 }}
-              />
+              >
+                <img 
+                  src="/images/real_hero_ice_cream.png" 
+                  alt="Gourmet Waffle Cone Ice Cream"
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    filter: 'drop-shadow(0 30px 45px rgba(62, 39, 35, 0.22))'
+                  }}
+                />
+              </motion.div>
             </motion.div>
           </div>
 
