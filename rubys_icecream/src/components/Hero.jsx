@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Send, Star, Zap } from 'lucide-react';
+import IceCream3D from './IceCream3D';
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -293,60 +294,21 @@ export default function Hero() {
               🍦 Fresh Waffles!
             </div>
 
-            {/* Parallax Background Shape */}
-            <div 
-              style={{
-                position: 'absolute',
-                width: '340px',
-                height: '340px',
-                background: 'var(--color-accent-pastel)',
-                borderRadius: '50%',
-                zIndex: 1,
-                bottom: '8%',
-                opacity: 0.5,
-                transform: `translate3d(${mousePosition.x * -35}px, ${mousePosition.y * -35}px, 0)`,
-                transition: 'transform 0.3s ease-out'
-              }}
-            />
 
-            {/* Main floating image moving on mouse coordinates & scroll-linked animation */}
-            <motion.div
-              style={{
-                x: xRange,
-                rotate: rotateRange,
-                width: '100%',
-                maxWidth: '420px',
-                display: 'flex',
-                justifyContent: 'center',
-                zIndex: 3
+            {/* Main interactive 3D WebGL Ice Cream Cone */}
+            <div 
+              style={{ 
+                width: '100%', 
+                maxWidth: '500px', 
+                height: '500px', 
+                display: 'flex', 
+                justifyContent: 'center', 
+                zIndex: 3,
+                position: 'relative'
               }}
             >
-              <motion.div 
-                variants={floatVariants}
-                animate="animate"
-                style={{
-                  position: 'relative',
-                  width: '100%',
-                  height: 'auto',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  x: mousePosition.x * 20,
-                  y: mousePosition.y * 20,
-                  transition: 'transform 0.3s ease-out'
-                }}
-              >
-                <img 
-                  src="/images/real_hero_ice_cream.png" 
-                  alt="Gourmet Waffle Cone Ice Cream"
-                  style={{
-                    width: '100%',
-                    height: 'auto',
-                    objectFit: 'contain',
-                    filter: 'drop-shadow(0 30px 45px rgba(62, 39, 35, 0.22))'
-                  }}
-                />
-              </motion.div>
-            </motion.div>
+              <IceCream3D />
+            </div>
           </div>
 
         </div>
