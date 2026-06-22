@@ -86,7 +86,7 @@ export const menuItems = [
     category: 'specials',
     price: 160,
     description: 'A nostalgic combination of strawberry, vanilla, and pineapple ice creams, fresh fruit slices, and strawberry crush.',
-    image: 'https://images.unsplash.com/photo-1505394033641-42c6c2950793?q=80&w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?q=80&w=600&auto=format&fit=crop',
     badge: 'Classic'
   },
   {
@@ -124,7 +124,7 @@ export const menuItems = [
     category: 'premium',
     price: 75,
     description: 'Rich and buttery vanilla ice cream loaded with premium golden-roasted almond chunks.',
-    image: 'https://images.unsplash.com/photo-1501443715855-6cf45ba6ac52?q=80&w=600&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1560512823-829485b8bf24?q=80&w=600&auto=format&fit=crop'
   },
   {
     id: 'angeer-delight',
@@ -132,7 +132,7 @@ export const menuItems = [
     category: 'premium',
     price: 75,
     description: 'Luxurious cream base blended with sweet, chewy dried fig bits for an exotic, sophisticated flavor.',
-    image: 'https://images.unsplash.com/photo-1534706936960-8e9014c0b897?q=80&w=600&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1600718374662-0483d2b9da44?q=80&w=600&auto=format&fit=crop'
   },
   {
     id: 'arabian-delight',
@@ -140,7 +140,7 @@ export const menuItems = [
     category: 'premium',
     price: 75,
     description: 'A rich mixture of dates, nuts, and exotic spices swirled in fresh dairy cream.',
-    image: 'https://images.unsplash.com/photo-1505394033641-42c6c2950793?q=80&w=600&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1543257580-7269da773bf5?q=80&w=600&auto=format&fit=crop'
   },
   {
     id: 'kaju-malai',
@@ -198,7 +198,7 @@ export const menuItems = [
     category: 'slabs',
     price: 65,
     description: 'Fruit cocktail flavor embedded with candied fruits (tutti-frutti) and soft nuts.',
-    image: 'https://images.unsplash.com/photo-1505394033641-42c6c2950793?q=80&w=600&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1517093602195-b40af9688b46?q=80&w=600&auto=format&fit=crop'
   },
 
   // --- MILKSHAKES ---
@@ -233,7 +233,7 @@ export const menuItems = [
     category: 'milkshakes',
     price: 80,
     description: 'Rich, energy-packed milkshake blended with premium sweet dried figs and milk.',
-    image: 'https://images.unsplash.com/photo-1534706936960-8e9014c0b897?q=80&w=600&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=600&auto=format&fit=crop'
   },
   {
     id: 'shake-mango',
