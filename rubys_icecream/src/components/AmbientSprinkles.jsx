@@ -26,19 +26,22 @@ export default function AmbientSprinkles() {
     checkTouch();
     window.addEventListener('resize', checkTouch);
 
-    if (isMobile) return;
+    let handleMouseMove;
+    if (!isMobile) {
+      handleMouseMove = (e) => {
+        // Get normalized coordinate offsets (-1 to 1) from window center
+        const x = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
+        const y = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
+        setMouseOffset({ x, y });
+      };
+      window.addEventListener('mousemove', handleMouseMove);
+    }
 
-    const handleMouseMove = (e) => {
-      // Get normalized coordinate offsets (-1 to 1) from window center
-      const x = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
-      const y = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
-      setMouseOffset({ x, y });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
     return () => {
       window.removeEventListener('resize', checkTouch);
-      window.removeEventListener('mousemove', handleMouseMove);
+      if (handleMouseMove) {
+        window.removeEventListener('mousemove', handleMouseMove);
+      }
     };
   }, [isMobile]);
 

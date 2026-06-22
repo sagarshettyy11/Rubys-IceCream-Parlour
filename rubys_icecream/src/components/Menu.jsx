@@ -17,6 +17,8 @@ export default function Menu({ onAddToCart }) {
 
   // 3D Card Tilt Calculation
   const handleCardMouseMove = (e) => {
+    if (window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window) return;
+
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 to 0.5
@@ -25,12 +27,16 @@ export default function Menu({ onAddToCart }) {
   };
 
   const handleCardMouseLeave = (e) => {
+    if (window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window) return;
+
     const card = e.currentTarget;
     card.style.transform = `perspective(800px) rotateY(0deg) rotateX(0deg) translateY(0deg)`;
   };
 
   // Magnetic Pull Calculation for filter buttons
   const handleMagneticMove = (e) => {
+    if (window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window) return;
+
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - (rect.left + rect.width / 2);
     const y = e.clientY - (rect.top + rect.height / 2);
@@ -38,6 +44,8 @@ export default function Menu({ onAddToCart }) {
   };
 
   const handleMagneticLeave = (e) => {
+    if (window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window) return;
+
     e.currentTarget.style.transform = `translate3d(0, 0, 0)`;
   };
 

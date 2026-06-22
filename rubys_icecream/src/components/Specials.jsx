@@ -41,6 +41,8 @@ export default function Specials({ onAddToCart }) {
 
   // 3D Card Tilt Calculation
   const handleCardMouseMove = (e) => {
+    if (window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window) return;
+
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 to 0.5
@@ -50,6 +52,8 @@ export default function Specials({ onAddToCart }) {
   };
 
   const handleCardMouseLeave = (e) => {
+    if (window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window) return;
+
     const card = e.currentTarget;
     card.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0deg)`;
   };
@@ -154,6 +158,7 @@ export default function Specials({ onAddToCart }) {
                     src={item.image} 
                     alt={item.name}
                     className="special-img"
+                    loading="lazy"
                     style={{
                       width: '100%',
                       height: '100%',

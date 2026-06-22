@@ -16,6 +16,9 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
+    const isTouch = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
+    if (isTouch) return;
+
     const handleMove = (e) => {
       const x = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
       const y = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
@@ -309,6 +312,7 @@ export default function Hero() {
               <img 
                 src="/images/Ice-Cream.webp" 
                 alt="Delicious Ice Cream"
+                fetchPriority="high"
                 style={{
                   width: '100%',
                   height: 'auto',

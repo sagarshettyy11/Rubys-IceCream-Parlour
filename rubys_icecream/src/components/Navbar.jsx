@@ -23,6 +23,8 @@ export default function Navbar({ cartCount, onCartClick }) {
 
   // Magnetic Pull Calculation Hook-like functions
   const handleMagneticMove = (e) => {
+    if (window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window) return;
+
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - (rect.left + rect.width / 2);
     const y = e.clientY - (rect.top + rect.height / 2);
@@ -31,6 +33,8 @@ export default function Navbar({ cartCount, onCartClick }) {
   };
 
   const handleMagneticLeave = (e) => {
+    if (window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window) return;
+
     e.currentTarget.style.transform = `translate3d(0, 0, 0)`;
   };
 

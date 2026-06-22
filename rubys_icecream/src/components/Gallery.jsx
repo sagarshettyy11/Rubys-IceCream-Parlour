@@ -86,6 +86,8 @@ export default function Gallery() {
 
   // 3D Card Tilt Calculation
   const handleCardMouseMove = (e) => {
+    if (window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window) return;
+
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 to 0.5
@@ -94,6 +96,8 @@ export default function Gallery() {
   };
 
   const handleCardMouseLeave = (e) => {
+    if (window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window) return;
+
     const card = e.currentTarget;
     card.style.transform = `perspective(800px) rotateY(0deg) rotateX(0deg) scale(1)`;
   };
@@ -148,6 +152,7 @@ export default function Gallery() {
                 <img 
                   src={image.url} 
                   alt={image.title} 
+                  loading="lazy"
                   style={{
                     width: '100%',
                     height: 'auto',

@@ -171,23 +171,11 @@ p {
   color: var(--bg-primary);
   box-shadow: 0 4px 12px rgba(62, 39, 35, 0.15);
 }
-.btn-primary:hover {
-  background-color: #5D4037;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(62, 39, 35, 0.25);
-  animation: liquid-morph 0.8s ease-in-out infinite alternate;
-}
 
 .btn-accent {
   background-color: var(--color-accent);
   color: #3E2723 !important; /* Fixed dark chocolate for contrast */
   box-shadow: 0 4px 12px rgba(229, 169, 59, 0.15);
-}
-.btn-accent:hover {
-  background-color: var(--color-accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(229, 169, 59, 0.25);
-  animation: liquid-morph 0.8s ease-in-out infinite alternate;
 }
 
 .btn-whatsapp {
@@ -195,22 +183,40 @@ p {
   color: white;
   box-shadow: 0 4px 12px rgba(37, 211, 102, 0.15);
 }
-.btn-whatsapp:hover {
-  background-color: var(--color-whatsapp-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
-  animation: liquid-morph 0.8s ease-in-out infinite alternate;
-}
 
 .btn-outline {
   background-color: transparent;
   color: var(--color-chocolate);
   border: 2px solid var(--color-chocolate);
 }
-.btn-outline:hover {
-  background-color: var(--color-chocolate);
-  color: var(--bg-primary);
-  transform: translateY(-2px);
+
+@media (hover: hover) {
+  .btn-primary:hover {
+    background-color: #5D4037;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(62, 39, 35, 0.25);
+    animation: liquid-morph 0.8s ease-in-out infinite alternate;
+  }
+
+  .btn-accent:hover {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(229, 169, 59, 0.25);
+    animation: liquid-morph 0.8s ease-in-out infinite alternate;
+  }
+
+  .btn-whatsapp:hover {
+    background-color: var(--color-whatsapp-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
+    animation: liquid-morph 0.8s ease-in-out infinite alternate;
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-chocolate);
+    color: var(--bg-primary);
+    transform: translateY(-2px);
+  }
 }
 
 .btn-sm {
@@ -304,6 +310,17 @@ p {
    MOBILE & TABLET RESPONSIVE REFINEMENTS
    ========================================== */
 @media (max-width: 768px) {
+  /* Disable expensive graphic effects to prevent GPU compositing and scroll lag on mobile */
+  .glow-highlight {
+    display: none !important;
+  }
+
+  .glass-panel {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: var(--bg-secondary) !important;
+  }
+
   /* Section Padding & Container margins */
   .section-padding {
     padding: 70px 0 !important;
@@ -351,7 +368,7 @@ p {
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
     justify-content: flex-start !important;
-    width: 100vw !important;
+    width: calc(100% + 40px) !important;
     padding: 8px 20px !important;
     margin-left: -20px !important;
     margin-right: -20px !important;
