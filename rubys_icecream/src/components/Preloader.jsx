@@ -344,7 +344,7 @@ export default function Preloader({ onComplete }) {
         ref={textRef}
         style={{
           fontFamily: 'var(--font-headings)',
-          color: 'var(--bg-primary, #FAF6F0)',
+          color: '#FAF6F0',
           fontWeight: '600',
           fontSize: '1.4rem',
           letterSpacing: '0.8px',

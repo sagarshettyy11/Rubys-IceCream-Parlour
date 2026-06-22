@@ -265,6 +265,7 @@ export default function Contact() {
         }
         .map-btn:hover {
           background-color: var(--color-accent) !important;
+          color: #3E2723 !important;
         }
         @media (max-width: 991px) {
           .contact-grid {

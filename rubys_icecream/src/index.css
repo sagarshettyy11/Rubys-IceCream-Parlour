@@ -30,16 +30,7 @@
   --container-max: 1280px;
 }
 
-/* Hide Default Cursor on Desktop for custom follower (except text inputs and textareas) */
-body.has-custom-cursor,
-body.has-custom-cursor a,
-body.has-custom-cursor button,
-body.has-custom-cursor select,
-body.has-custom-cursor [role="button"],
-body.has-custom-cursor .cart-trigger,
-body.has-custom-cursor .add-to-cart-btn {
-  cursor: none !important;
-}
+/* Enable normal system cursor everywhere */
 
 /* Base Reset & Global Styles */
 * {
@@ -138,12 +129,12 @@ p {
 }
 .badge-gold {
   background-color: var(--color-accent-pastel);
-  color: var(--color-chocolate);
+  color: #3E2723 !important; /* Fixed dark chocolate for contrast */
   border: 1px solid rgba(229, 169, 59, 0.2);
 }
 .badge-pink {
   background-color: var(--color-pink-pastel);
-  color: var(--color-chocolate);
+  color: #3E2723 !important; /* Fixed dark chocolate for contrast */
   border: 1px solid rgba(62, 39, 35, 0.05);
 }
 
@@ -189,7 +180,7 @@ p {
 
 .btn-accent {
   background-color: var(--color-accent);
-  color: var(--color-chocolate);
+  color: #3E2723 !important; /* Fixed dark chocolate for contrast */
   box-shadow: 0 4px 12px rgba(229, 169, 59, 0.15);
 }
 .btn-accent:hover {

@@ -14,21 +14,19 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
     if (cartItems.length === 0) return;
 
     // Structured Text compilation
-    let message = `*🍦 NEW ICE CREAM ORDER FROM RUBY'S 🍦*\n\n`;
+    let message = `*🍦 NEW ICE CREAM ORDER 🍦*\n\n`;
     message += `*Customer Details:*\n`;
-    message += `• *Name:* ${customerName || 'Anonymous'}\n`;
-    message += `• *Type:* ${orderType === 'pickup' ? 'Store Pickup' : orderType === 'dinein' ? 'Table Dine-in' : 'Delivery'}\n`;
+    message += `*Name:* ${customerName || 'Anonymous'}\n`;
+    message += `*Type:* ${orderType === 'pickup' ? 'Store Pickup' : orderType === 'dinein' ? 'Table Dine-in' : 'Delivery'}\n`;
     if (notes) {
-      message += `• *Notes:* ${notes}\n`;
+      message += `*Notes:* ${notes}\n`;
     }
     message += `\n*Order Summary:*\n`;
-
     cartItems.forEach((item) => {
-      message += `• ${item.quantity}x _${item.name}_ (Rs. ${item.price} each) → *Rs. ${item.price * item.quantity}*\n`;
+      message += `• ${item.quantity}x ${item.name} - Rs. ${item.price * item.quantity}\n`;
     });
 
     message += `\n*Total Bill: Rs. ${totalPrice}*`;
-    message += `\n\n_Thank you for ordering with Ruby's!_`;
 
     const encodedMessage = encodeURIComponent(message);
     // Parlour official WhatsApp number (+91 82968 37118)
@@ -38,7 +36,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
   if (!isOpen) return null;
 
   return (
-    <div 
+    <div
       style={{
         position: 'fixed',
         top: 0,
@@ -51,7 +49,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
       }}
     >
       {/* Backdrop Backdrop Overlay blur */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -69,7 +67,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
       />
 
       {/* Main Drawer Slide In panel */}
-      <motion.div 
+      <motion.div
         className="cart-drawer-panel"
         initial={{ x: '100%' }}
         animate={{ x: 0 }}
@@ -89,7 +87,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
         }}
       >
         {/* Drawer Header */}
-        <div 
+        <div
           style={{
             padding: '24px',
             borderBottom: '1px solid var(--border-color)',
@@ -102,7 +100,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
             <ShoppingBag size={22} style={{ color: 'var(--color-chocolate)' }} />
             <h3 style={{ fontSize: '1.25rem', fontWeight: '700' }}>Your Scoop Cart</h3>
           </div>
-          <button 
+          <button
             onClick={onClose}
             style={{
               background: 'transparent',
@@ -117,7 +115,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
         </div>
 
         {/* Drawer Items list */}
-        <div 
+        <div
           style={{
             flexGrow: 1,
             overflowY: 'auto',
@@ -129,7 +127,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
           className="cart-items-container"
         >
           {cartItems.length === 0 ? (
-            <div 
+            <div
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -150,7 +148,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
               {/* Items List */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 {cartItems.map((item) => (
-                  <div 
+                  <div
                     key={item.id}
                     style={{
                       display: 'flex',
@@ -162,9 +160,9 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
                       border: '1px solid var(--border-color)'
                     }}
                   >
-                    <img 
-                      src={item.image} 
-                      alt={item.name} 
+                    <img
+                      src={item.image}
+                      alt={item.name}
                       style={{
                         width: '64px',
                         height: '64px',
@@ -175,10 +173,10 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
                     <div style={{ flexGrow: 1 }}>
                       <h4 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '4px' }}>{item.name}</h4>
                       <p style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--color-caramel)' }}>Rs. {item.price}</p>
-                      
+
                       {/* Quantity Selectors */}
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '6px' }}>
-                        <button 
+                        <button
                           onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
                           style={{
                             width: '24px',
@@ -195,7 +193,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
                           <Minus size={12} />
                         </button>
                         <span style={{ fontSize: '0.9rem', fontWeight: '600', minWidth: '16px', textAlign: 'center' }}>{item.quantity}</span>
-                        <button 
+                        <button
                           onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
                           style={{
                             width: '24px',
@@ -215,7 +213,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
                     </div>
 
                     {/* Remove Action */}
-                    <button 
+                    <button
                       onClick={() => onRemoveItem(item.id)}
                       style={{
                         background: 'transparent',
@@ -232,7 +230,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
               </div>
 
               {/* Customer Details Form */}
-              <form 
+              <form
                 onSubmit={handleCheckout}
                 style={{
                   marginTop: '16px',
@@ -244,14 +242,14 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
                 }}
               >
                 <h4 style={{ fontSize: '0.95rem', fontWeight: '700', color: 'var(--color-chocolate)' }}>Delivery Details</h4>
-                
+
                 {/* Input Name */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                   <label style={{ fontSize: '0.75rem', fontWeight: '600', textTransform: 'uppercase', color: 'var(--color-caramel)' }}>Your Name</label>
-                  <input 
-                    type="text" 
-                    required 
-                    placeholder="Enter your name" 
+                  <input
+                    type="text"
+                    required
+                    placeholder="Enter your name"
                     value={customerName}
                     onChange={(e) => setCustomerName(e.target.value)}
                     style={{
@@ -271,7 +269,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                   <label style={{ fontSize: '0.75rem', fontWeight: '600', textTransform: 'uppercase', color: 'var(--color-caramel)' }}>Order Type</label>
                   <div style={{ display: 'flex', gap: '10px' }}>
-                    <label 
+                    <label
                       style={{
                         flex: 1,
                         display: 'flex',
@@ -282,23 +280,24 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
                         borderRadius: '8px',
                         border: `1px solid ${orderType === 'pickup' ? 'var(--color-chocolate)' : 'var(--border-color)'}`,
                         background: orderType === 'pickup' ? 'var(--color-accent-pastel)' : 'transparent',
+                        color: orderType === 'pickup' ? '#3E2723' : 'var(--color-chocolate)',
                         fontSize: '0.85rem',
                         fontWeight: '600',
                         cursor: 'pointer'
                       }}
                     >
-                      <input 
-                        type="radio" 
-                        name="orderType" 
-                        value="pickup" 
-                        checked={orderType === 'pickup'} 
+                      <input
+                        type="radio"
+                        name="orderType"
+                        value="pickup"
+                        checked={orderType === 'pickup'}
                         onChange={() => setOrderType('pickup')}
                         style={{ display: 'none' }}
                       />
                       Pickup
                     </label>
 
-                    <label 
+                    <label
                       style={{
                         flex: 1,
                         display: 'flex',
@@ -309,23 +308,24 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
                         borderRadius: '8px',
                         border: `1px solid ${orderType === 'dinein' ? 'var(--color-chocolate)' : 'var(--border-color)'}`,
                         background: orderType === 'dinein' ? 'var(--color-accent-pastel)' : 'transparent',
+                        color: orderType === 'dinein' ? '#3E2723' : 'var(--color-chocolate)',
                         fontSize: '0.85rem',
                         fontWeight: '600',
                         cursor: 'pointer'
                       }}
                     >
-                      <input 
-                        type="radio" 
-                        name="orderType" 
-                        value="dinein" 
-                        checked={orderType === 'dinein'} 
+                      <input
+                        type="radio"
+                        name="orderType"
+                        value="dinein"
+                        checked={orderType === 'dinein'}
                         onChange={() => setOrderType('dinein')}
                         style={{ display: 'none' }}
                       />
                       Dine-in
                     </label>
 
-                    <label 
+                    <label
                       style={{
                         flex: 1,
                         display: 'flex',
@@ -336,16 +336,17 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
                         borderRadius: '8px',
                         border: `1px solid ${orderType === 'delivery' ? 'var(--color-chocolate)' : 'var(--border-color)'}`,
                         background: orderType === 'delivery' ? 'var(--color-accent-pastel)' : 'transparent',
+                        color: orderType === 'delivery' ? '#3E2723' : 'var(--color-chocolate)',
                         fontSize: '0.85rem',
                         fontWeight: '600',
                         cursor: 'pointer'
                       }}
                     >
-                      <input 
-                        type="radio" 
-                        name="orderType" 
-                        value="delivery" 
-                        checked={orderType === 'delivery'} 
+                      <input
+                        type="radio"
+                        name="orderType"
+                        value="delivery"
+                        checked={orderType === 'delivery'}
                         onChange={() => setOrderType('delivery')}
                         style={{ display: 'none' }}
                       />
@@ -357,8 +358,8 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
                 {/* Optional Notes */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                   <label style={{ fontSize: '0.75rem', fontWeight: '600', textTransform: 'uppercase', color: 'var(--color-caramel)' }}>Special Instructions</label>
-                  <textarea 
-                    placeholder="Extra nuts, less sweet, table number etc." 
+                  <textarea
+                    placeholder="Extra nuts, less sweet, table number etc."
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
                     rows={2}
@@ -382,7 +383,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
 
         {/* Drawer Footer Checkout panel */}
         {cartItems.length > 0 && (
-          <div 
+          <div
             style={{
               padding: '24px',
               borderTop: '1px solid var(--border-color)',
@@ -394,7 +395,7 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
               <span style={{ fontFamily: 'var(--font-headings)', fontWeight: '800', fontSize: '1.4rem' }}>Rs. {totalPrice}</span>
             </div>
 
-            <button 
+            <button
               onClick={handleCheckout}
               disabled={cartItems.length === 0}
               className="btn btn-whatsapp"

@@ -278,6 +278,7 @@ export default function Hero() {
                 right: '5%',
                 zIndex: 4,
                 background: 'var(--color-pink-pastel)',
+                color: '#3E2723', // Keep text color dark brown for contrast
                 padding: '8px 16px',
                 borderRadius: '50px',
                 boxShadow: 'var(--shadow-md)',

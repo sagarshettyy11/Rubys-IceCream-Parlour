@@ -317,6 +317,7 @@ export default function Menu({ onAddToCart }) {
         }
         .add-to-cart-btn:hover {
           background-color: var(--color-accent) !important;
+          color: #3E2723 !important;
           transform: scale(1.1);
         }
       `}</style>

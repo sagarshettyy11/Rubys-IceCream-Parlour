@@ -13,7 +13,6 @@ import Stats from './components/Stats';
 import Contact from './components/Contact';
 import CartDrawer from './components/CartDrawer';
 // Awwwards Premium Upgrade Components
-import CustomCursor from './components/CustomCursor';
 import AmbientSprinkles from './components/AmbientSprinkles';
 import DripDivider from './components/DripDivider';
 
@@ -93,10 +92,6 @@ export default function App() {
 
   return (
     <>
-
-      {/* Interactive custom cherry/scoop cursor */}
-      <CustomCursor />
-
       {/* Navigation Header */}
       <Navbar cartCount={cartCount} onCartClick={() => setIsCartOpen(true)} />
 
