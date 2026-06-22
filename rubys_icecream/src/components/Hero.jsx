@@ -83,7 +83,7 @@ export default function Hero() {
 
   const handleWhatsAppContact = () => {
     const text = encodeURIComponent("Hello Ruby's Ice Cream! I'd like to check the menu and place an order.");
-    window.open(`https://wa.me/919999999999?text=${text}`, '_blank');
+    window.open(`https://wa.me/918296837118?text=${text}`, '_blank');
   };
 
   return (

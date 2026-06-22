@@ -31,8 +31,8 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
     message += `\n\n_Thank you for ordering with Ruby's!_`;
 
     const encodedMessage = encodeURIComponent(message);
-    // Parlour official WhatsApp number (+91 99999 99999)
-    window.open(`https://wa.me/919999999999?text=${encodedMessage}`, '_blank');
+    // Parlour official WhatsApp number (+91 82968 37118)
+    window.open(`https://wa.me/918296837118?text=${encodedMessage}`, '_blank');
   };
 
   if (!isOpen) return null;

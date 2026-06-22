@@ -3,7 +3,7 @@ import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 
 export default function Contact() {
   const handleMapClick = () => {
-    window.open('https://maps.google.com/?q=Mangaladevi+Temple+Rd,+Mangaluru,+Karnataka+575001', '_blank');
+    window.open('https://maps.app.goo.gl/AMcmmY1m3WNGPQY96?g_st=ic', '_blank');
   };
 
   return (
@@ -58,7 +58,7 @@ export default function Contact() {
                 </span>
                 <div>
                   <h4 style={{ fontSize: '1.1rem', fontWeight: '700', marginBottom: '4px' }}>Our Location</h4>
-                  <p style={{ fontSize: '0.9rem' }}>Ruby's Dessert Parlour, Mangaladevi Temple Road, Hampankatta, Mangaluru, Karnataka 575001</p>
+                  <p style={{ fontSize: '0.9rem' }}>Ruby's Ice-Cream Parlour, Kudva's Grandeur, Surathkal, Mangaluru, Karnataka 575014</p>
                 </div>
               </div>
 
@@ -107,8 +107,8 @@ export default function Contact() {
                 <div>
                   <h4 style={{ fontSize: '1.1rem', fontWeight: '700', marginBottom: '4px' }}>Phone & Support</h4>
                   <p style={{ fontSize: '0.9rem' }}>
-                    Tel: +91 824 244 8899 <br />
-                    WhatsApp: +91 99999 99999
+                    Tel: +91 82968 37118 <br />
+                    WhatsApp: +91 82968 37118
                   </p>
                 </div>
               </div>
@@ -202,7 +202,7 @@ export default function Contact() {
             <div style={{ flexGrow: 1, borderRadius: 'var(--radius-md)', overflow: 'hidden', position: 'relative' }}>
               <iframe
                 title="Ruby's Ice Cream Parlour Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.8329671158654!2d74.83984537574744!3d12.85392818745053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba35a39626e2e5f%3A0xe54e6022e1bdfc08!2sMangaladevi%20Temple%20Rd%2C%20Mangaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                src="https://maps.google.com/maps?q=Ruby's%20Ice-Cream%20Parlour,%20Kudva's%20Grandeur,%20Surathkal,%20Mangaluru,%20Karnataka%20575014&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

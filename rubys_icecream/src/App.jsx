@@ -87,7 +87,7 @@ export default function App() {
       setIsCartOpen(true);
     } else {
       const text = encodeURIComponent("Hello Ruby's Ice Cream! I'd like to ask about today's special flavors.");
-      window.open(`https://wa.me/919999999999?text=${text}`, '_blank');
+      window.open(`https://wa.me/918296837118?text=${text}`, '_blank');
     }
   };
 

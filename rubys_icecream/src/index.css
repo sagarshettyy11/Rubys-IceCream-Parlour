@@ -30,19 +30,15 @@
   --container-max: 1280px;
 }
 
-/* Hide Default Cursor on Desktop for custom follower */
-@media (min-width: 1025px) {
-  body.has-custom-cursor,
-  body.has-custom-cursor a,
-  body.has-custom-cursor button,
-  body.has-custom-cursor select,
-  body.has-custom-cursor input,
-  body.has-custom-cursor textarea,
-  body.has-custom-cursor [role="button"],
-  body.has-custom-cursor .cart-trigger,
-  body.has-custom-cursor .add-to-cart-btn {
-    cursor: none !important;
-  }
+/* Hide Default Cursor on Desktop for custom follower (except text inputs and textareas) */
+body.has-custom-cursor,
+body.has-custom-cursor a,
+body.has-custom-cursor button,
+body.has-custom-cursor select,
+body.has-custom-cursor [role="button"],
+body.has-custom-cursor .cart-trigger,
+body.has-custom-cursor .add-to-cart-btn {
+  cursor: none !important;
 }
 
 /* Base Reset & Global Styles */

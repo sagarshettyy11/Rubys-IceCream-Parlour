@@ -29,9 +29,9 @@ export default function CustomCursor() {
     document.body.classList.add('has-custom-cursor');
 
     const handleMouseMove = (e) => {
-      // Offset by half of cursor default size (16px)
-      cursorX.set(e.clientX - 16);
-      cursorY.set(e.clientY - 16);
+      // Set to exact mouse coordinates
+      cursorX.set(e.clientX);
+      cursorY.set(e.clientY);
     };
 
     const handleMouseOver = (e) => {
@@ -48,8 +48,16 @@ export default function CustomCursor() {
           setCursorText('');
         }
       } else {
+        // Check if hover is text input/textarea
+        const isTextInput = e.target.closest('input, textarea');
+        if (isTextInput) {
+          setCursorType('text');
+          setCursorText('');
+          return;
+        }
+
         // Check if hover is general link or button
-        const isInteractive = e.target.closest('a, button, input, select, textarea, [role="button"], .cart-trigger, .add-to-cart-btn');
+        const isInteractive = e.target.closest('a, button, select, [role="button"], .cart-trigger, .add-to-cart-btn');
         if (isInteractive) {
           setCursorType('hovered');
           setCursorText('');
@@ -72,48 +80,53 @@ export default function CustomCursor() {
 
   if (isMobile) return null;
 
-  // Custom styling based on current state
+  // Custom styling based on current state (without X/Y springs which are applied to the wrapper)
   const getVariants = () => {
     switch (cursorType) {
       case 'add':
         return {
           width: 64,
           height: 64,
-          backgroundColor: 'var(--color-chocolate)',
+          backgroundColor: 'rgba(62, 39, 35, 0.15)', // semi-transparent chocolate
           borderColor: 'var(--color-chocolate)',
-          x: cursorXSpring,
-          y: cursorYSpring,
-          scale: 1
+          scale: 1,
+          opacity: 1
         };
       case 'zoom':
         return {
           width: 64,
           height: 64,
-          backgroundColor: 'var(--color-accent)',
+          backgroundColor: 'rgba(229, 169, 59, 0.2)', // semi-transparent gold
           borderColor: 'var(--color-accent)',
-          x: cursorXSpring,
-          y: cursorYSpring,
-          scale: 1
+          scale: 1,
+          opacity: 1
         };
       case 'hovered':
         return {
-          width: 48,
-          height: 48,
-          backgroundColor: 'rgba(62, 39, 35, 0.1)',
-          borderColor: 'var(--color-chocolate)',
-          scale: 1.2,
-          x: cursorXSpring,
-          y: cursorYSpring
+          width: 56,
+          height: 56,
+          backgroundColor: 'rgba(229, 169, 59, 0.08)', // subtle tint
+          borderColor: 'var(--color-accent)', // stands out nicely
+          scale: 1.1,
+          opacity: 1
+        };
+      case 'text':
+        return {
+          width: 0,
+          height: 0,
+          scale: 0,
+          backgroundColor: 'transparent',
+          borderColor: 'transparent',
+          opacity: 0
         };
       default:
         return {
-          width: 32,
-          height: 32,
+          width: 24,
+          height: 24,
           backgroundColor: 'transparent',
           borderColor: 'var(--color-chocolate)',
           scale: 1,
-          x: cursorXSpring,
-          y: cursorYSpring
+          opacity: 1
         };
     }
   };
@@ -124,29 +137,62 @@ export default function CustomCursor() {
         position: 'fixed',
         top: 0,
         left: 0,
-        borderRadius: '50%',
-        border: '2px solid var(--color-chocolate)',
+        x: cursorXSpring,
+        y: cursorYSpring,
         pointerEvents: 'none',
-        zIndex: 9999,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        transformOrigin: 'center center'
+        zIndex: 9999
       }}
-      animate={getVariants()}
-      transition={{ type: 'tween', ease: 'backOut', duration: 0.2 }}
     >
-      {cursorText && (
-        <span 
-          style={{
-            fontSize: '0.65rem',
-            fontWeight: '800',
-            letterSpacing: '1px',
-            color: cursorType === 'zoom' ? 'var(--color-chocolate)' : 'var(--bg-primary)'
+      {/* Outer Ring */}
+      <motion.div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          borderRadius: '50%',
+          border: '2px solid var(--color-chocolate)',
+          pointerEvents: 'none',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          transform: 'translate(-50%, -50%)', // Keeps it perfectly centered
+          transformOrigin: 'center center'
+        }}
+        animate={getVariants()}
+        transition={{ type: 'tween', ease: 'backOut', duration: 0.25 }}
+      >
+        {cursorText && (
+          <span 
+            style={{
+              fontSize: '0.65rem',
+              fontWeight: '800',
+              letterSpacing: '1px',
+              color: 'var(--color-chocolate)' // dark chocolate stands out nicely!
+            }}
+          >
+            {cursorText}
+          </span>
+        )}
+      </motion.div>
+
+      {/* Inner Dot */}
+      {cursorType !== 'text' && !cursorText && (
+        <motion.div
+          animate={{
+            scale: cursorType === 'hovered' ? 1.5 : 1,
+            backgroundColor: cursorType === 'hovered' ? 'var(--color-accent)' : 'var(--color-chocolate)'
           }}
-        >
-          {cursorText}
-        </span>
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '6px',
+            height: '6px',
+            borderRadius: '50%',
+            transform: 'translate(-50%, -50%)',
+            pointerEvents: 'none'
+          }}
+        />
       )}
     </motion.div>
   );
