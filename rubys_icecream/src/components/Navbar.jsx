@@ -58,7 +58,7 @@ export default function Navbar({ cartCount, onCartClick }) {
           style={{ 
             display: 'flex', 
             alignItems: 'center', 
-            gap: '8px', 
+            gap: '12px', 
             textDecoration: 'none', 
             color: 'var(--color-chocolate)',
             fontFamily: 'var(--font-headings)',
@@ -68,7 +68,18 @@ export default function Navbar({ cartCount, onCartClick }) {
             transition: 'transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
           }}
         >
-          <IceCream size={28} style={{ color: 'var(--color-accent)' }} />
+          <img 
+            src="/images/Rubys-Ice-CreamLogo.jpeg" 
+            alt="Ruby's Ice Cream Logo" 
+            style={{ 
+              width: '42px', 
+              height: '42px', 
+              borderRadius: '50%', 
+              objectFit: 'cover', 
+              border: '2px solid var(--color-accent)',
+              boxShadow: 'var(--shadow-sm)'
+            }} 
+          />
           <span>RUBY'S</span>
         </a>
 

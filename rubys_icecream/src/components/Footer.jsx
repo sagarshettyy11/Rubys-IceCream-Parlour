@@ -33,7 +33,7 @@ export default function Footer() {
               style={{ 
                 display: 'flex', 
                 alignItems: 'center', 
-                gap: '8px', 
+                gap: '12px', 
                 textDecoration: 'none', 
                 color: 'var(--bg-primary)',
                 fontFamily: 'var(--font-headings)',
@@ -41,7 +41,18 @@ export default function Footer() {
                 fontSize: '1.4rem'
               }}
             >
-              <IceCream size={24} style={{ color: 'var(--color-accent)' }} />
+              <img 
+                src="/images/Rubys-Ice-CreamLogo.jpeg" 
+                alt="Ruby's Ice Cream Logo" 
+                style={{ 
+                  width: '36px', 
+                  height: '36px', 
+                  borderRadius: '50%', 
+                  objectFit: 'cover', 
+                  border: '2px solid var(--color-accent)',
+                  boxShadow: 'var(--shadow-sm)'
+                }} 
+              />
               <span>RUBY'S</span>
             </a>
             <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', maxWidth: '280px' }}>

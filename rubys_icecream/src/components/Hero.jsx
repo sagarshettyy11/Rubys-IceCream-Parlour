@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Send, Star, Zap } from 'lucide-react';
-import IceCream3D from './IceCream3D';
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -295,19 +294,27 @@ export default function Hero() {
             </div>
 
 
-            {/* Main interactive 3D WebGL Ice Cream Cone */}
+            {/* Simple static Ice Cream Image */}
             <div 
               style={{ 
                 width: '100%', 
-                maxWidth: '500px', 
-                height: '500px', 
+                maxWidth: '480px', 
                 display: 'flex', 
                 justifyContent: 'center', 
                 zIndex: 3,
                 position: 'relative'
               }}
             >
-              <IceCream3D />
+              <img 
+                src="/images/Ice-Cream.webp" 
+                alt="Delicious Ice Cream"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  objectFit: 'contain',
+                  filter: 'drop-shadow(0 20px 30px rgba(62, 39, 35, 0.15))'
+                }}
+              />
             </div>
           </div>
 
